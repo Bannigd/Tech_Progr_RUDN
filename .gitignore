@@ -1,0 +1,5 @@
+key
+key.pub
+*.exe
+.vscode/settings.json
+.editorconfig

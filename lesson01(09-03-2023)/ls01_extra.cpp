@@ -161,5 +161,5 @@ int main() {
     delete penguin;
     delete crow;
     delete fish;
-        return 0;
+    return 0;
 }

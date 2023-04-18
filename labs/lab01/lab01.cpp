@@ -72,10 +72,7 @@ Node* add_before(Node* head_node, string given_name, int given_id, double given_
     Node* current_node = head_node;
     while (!is_equal(current_node->next, given_name, given_id, given_value)) {
         current_node = current_node->next;
-        if (current_node->next == NULL) {
-            cout << "Node not found, nothing added.\n";
-            return head_node;
-        }
+        if (current_node->next == NULL) return head_node;
     }
 
     Node* new_node = create_node(new_name, new_id, new_value);

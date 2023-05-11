@@ -12,19 +12,25 @@ class Vector {
 private:
     vector<double> coordinates;
 public:
-    Vector() {
-        cout << "Memory allocated\n";
-    }
+    Vector() {}
     Vector(vector<double> coordinates) {
         this->coordinates = coordinates;
-        cout << "Memory allocated\n";
     }
 
     Vector& operator=(const Vector& Second) {
         this->coordinates = Second.coordinates;
         return *this;
     }
-
+    Vector& setCoordinates() {
+        int size;
+        double coord;
+        cin >> size;
+        for (int i = 0;i < size;i++) {
+            cin >> coord;
+            this->coordinates.push_back(coord);
+        }
+        return *this;
+    }
     friend Vector operator+(Vector& v1, Vector& v2);
     friend Vector operator-(Vector& v1, Vector& v2);
     friend double operator*(Vector& v1, Vector& v2); // dot product
@@ -47,10 +53,6 @@ public:
         cout << endl;
     }
 
-    ~Vector() {
-        cout << "Memory deallocated\n";
-    }
-
     double length() {
         return sqrt(*this * *this);
     }
@@ -58,6 +60,9 @@ public:
     double angleTo(Vector& V) {
         return acos(*this * V / (this->length() * V.length()));
     }
+
+    ~Vector() {}
+
 };
 
 Vector operator+(Vector& v1, Vector& v2) {
@@ -104,7 +109,8 @@ Vector operator/(Vector& V, double number) {
 int main() {
 
     Vector* Vector1 = new Vector({ 1.,1.,1.,1. });
-    Vector* Vector2 = new Vector({ 2.,3.,4.,5. });
+    Vector* Vector2 = new Vector();
+    Vector2->setCoordinates();
     Vector* VectorSum = new Vector();
     Vector* VectorSubs = new Vector();
     Vector* VectorNumberMul = new Vector();
